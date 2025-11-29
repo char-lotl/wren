@@ -32,6 +32,8 @@ summary {
 	display: none;
 	font-size: 1.4em;
 	padding: 3%;
+	cursor: default;
+	user-select: none;
 }
 
 summary:focus {

@@ -123,6 +123,7 @@ span {
 
 span.dummy {
 	opacity: 0%;
+	line-height: 1.2;
 }
 
 span.dialogue {
@@ -131,6 +132,7 @@ span.dialogue {
 	transition-timing-function: linear;
 	position: absolute;
 	left: 0%;
+	line-height: 1.2;
 }
 
 summary:focus > div > span.dialogue {

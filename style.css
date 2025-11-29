@@ -1,0 +1,105 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.scene {
+	width: 40em;
+	height: 30em;
+	background-color: black;
+	position: relative;
+	/* must be relative so that child percentages work,
+	for "containing block" reasons */
+}
+
+summary {
+	list-style: none;
+	box-sizing: border-box;
+	width: 90%;
+	height: 30%;
+	position: absolute;
+	left: 5%;
+	bottom: 5%;
+	background-color: tan;
+	font-family: monospace;
+	display: none;
+	font-size: 1.4em;
+	padding: 3%;
+}
+
+summary:focus {
+	display: block;
+	outline: none;
+}
+
+details:has(summary:focus) + details > summary, .d0:has(summary:focus) + div > .d1 > .sum1 {
+	display: block;
+	opacity: 0%;
+}
+
+/* specificity manipulation, (0,1,2) to beat summary:focus (0,1,1) */
+details > summary.sum0 {
+	width: unset;
+	height: unset;
+	position: unset;
+	left: unset;
+	bottom: unset;
+	background-color: lightgray;
+	display: inline-block;
+	font-family: unset;
+	font-size: unset;
+	padding: 0.3em;
+	border-radius: 0.4em;
+	margin: 0.5em;
+}
+
+.sum0:focus {
+	background-color: lightgreen;
+}
+
+summary > div {
+	position: relative;
+	display: inline-block;
+}
+
+span {
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+span.dummy {
+	opacity: 0%;
+}
+
+span.dialogue {
+	width: 0;
+	transition: width 0s;
+	transition-timing-function: linear;
+	position: absolute;
+	left: 0%;
+}
+
+summary:focus > div > span.dialogue {
+	width: 100%;
+}
+
+summary:focus > div > .s1 {
+	transition-duration: 0.5s;
+}
+
+summary:focus > div > .s2 {
+	transition-duration: 0.95s;
+}
+
+summary:focus > div > .s3.line1 {
+	transition-duration: 2.55s;
+}
+
+summary:focus > div > .s3.line2 {
+	transition-duration: 1.75s;
+	transition-delay: 2.55s;
+}

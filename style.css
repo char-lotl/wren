@@ -153,11 +153,6 @@ details[open] + details .s3.line1 {
 }
 
 details[open] + details .s3.line2 {
-	transition-duration: 1.225s;
+	transition-duration: 0.825s;
 	transition-delay: 0.9s;
-}
-
-details[open] + details .s3.line3 {
-	transition-duration: 0.3s;
-	transition-delay: 2.125s;
 }

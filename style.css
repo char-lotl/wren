@@ -16,69 +16,59 @@ html {
 	background-size: cover;
 	position: relative;
 	/* must be relative so that child percentages work,
-	for "containing block" reasons */
+	for containing block reasons */
+	z-index: 0;
 }
 
 summary {
 	list-style: none;
 	box-sizing: border-box;
-	width: 90%;
-	height: 30%;
+	width: 100%;
+	height: 100%;/*30%;*/
 	position: absolute;
-	left: 5%;
-	bottom: 5%;
-	background-color: tan;
 	font-family: monospace;
 	display: none;
 	font-size: 1.4em;
-	padding: 3%;
 	cursor: default;
 	user-select: none;
 }
 
-summary:focus {
-	display: block;
-	outline: none;
+details[open] {
+	display: none;
 }
 
-details:has(summary:focus) + details > summary, .d0:has(summary:focus) + div > .d1 > .sum1 {
+details[open] + details > summary {
+	display: block;
+}
+
+.sum1{z-index: -1;}
+.sum2{z-index: -2;}
+.sum3{z-index: -3;}
+
+details[open] + details:not([open]) + details > summary, .d0:not([open]) + details > summary {
 	display: block;
 	opacity: 0%;
 }
 
-/* specificity manipulation, (0,1,2) to beat summary:focus (0,1,1) */
-details > summary.sum0 {
-	width: unset;
-	height: unset;
-	position: unset;
-	left: unset;
-	bottom: unset;
-	background-color: lightgray;
-	display: inline-block;
-	font-family: unset;
-	font-size: unset;
-	padding: 0.3em;
-	border-radius: 0.4em;
-	margin: 0.5em;
+.sum0 {
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.sum0:focus {
-	background-color: lightgreen;
-}
-
-summary > div {
+.textrow {
 	position: relative;
 	display: inline-block;
 }
 
 div.profile {
 	position: absolute;
-	left: 0;
-	top: -1.5em;
-}
-
-div.profile:has(.portrait) {
-	top: -5em;
+	left: 5%;
+	bottom: 35%;
+	display: flex;
+	align-items: flex-end;
 }
 
 div.portrait {
@@ -97,9 +87,8 @@ div.name {
 	padding-right: 0.5em;
 }
 
-div.profile.vriska {
-	top: -238px;
-	left: -30px;
+.portrait + .name {
+	left: 20%;
 }
 
 .vriska > .portrait {
@@ -107,12 +96,24 @@ div.profile.vriska {
 	width: 187px;
 	background-color: unset;
 	background-image: url("media/vriska-idle.gif");
+	position: relative;
+	left: -30px;
 }
 
 .vriska > .name {
 	background-color: #005682;
 	position: relative;
-	left: -30px;
+	left: -45px;
+}
+
+.dialogbox {
+	width: 90%;
+	height: 30%;
+	bottom: 5%;
+	left: 5%;
+	padding: 3%;
+	position: absolute;
+	background-color: tan;
 }
 
 span {
@@ -135,28 +136,28 @@ span.dialogue {
 	line-height: 1.2;
 }
 
-summary:focus > div > span.dialogue {
+details[open] + details span.dialogue {
 	width: 100%;
 }
 
-summary:focus > div > .s1 {
+details[open] + details .s1 {
 	transition-duration: 0.25s;
 }
 
-summary:focus > div > .s2 {
+details[open] + details .s2 {
 	transition-duration: 0.975s;
 }
 
-summary:focus > div > .s3.line1 {
+details[open] + details .s3.line1 {
 	transition-duration: 0.9s;
 }
 
-summary:focus > div > .s3.line2 {
+details[open] + details .s3.line2 {
 	transition-duration: 1.225s;
 	transition-delay: 0.9s;
 }
 
-summary:focus > div > .s3.line3 {
+details[open] + details .s3.line3 {
 	transition-duration: 0.3s;
 	transition-delay: 2.125s;
 }
